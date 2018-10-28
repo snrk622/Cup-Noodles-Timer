@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     //再生するサウンドのインスタンス
     var audioStart : AVAudioPlayer! = nil
     var audioStop : AVAudioPlayer! = nil
+    var audioComplete : AVAudioPlayer! = nil
 
     override func viewDidLoad() {//このViewControllerが呼び出される時に一度だけ実行される
         super.viewDidLoad()
@@ -39,11 +40,14 @@ class ViewController: UIViewController {
         let soundStart:URL = URL(fileURLWithPath: soundFilePathStart)
         let soundFilePathStop = Bundle.main.path(forResource: "stop", ofType: "mp3")!
         let soundStop:URL = URL(fileURLWithPath: soundFilePathStop)
+        let soundFilePathComplete = Bundle.main.path(forResource: "complete", ofType: "mp3")!
+        let soundComplete:URL = URL(fileURLWithPath: soundFilePathComplete)
         
         //AVAudioPlayerのインスタンスを作成、ファイルの読み込み
         do {
             audioStart = try AVAudioPlayer(contentsOf: soundStart, fileTypeHint: nil)
             audioStop = try AVAudioPlayer(contentsOf: soundStop, fileTypeHint: nil)
+            audioComplete = try AVAudioPlayer(contentsOf: soundComplete, fileTypeHint: nil)
         } catch {
             print("AVAudioPlayerインスタンス作成でエラー")
         }
@@ -51,6 +55,7 @@ class ViewController: UIViewController {
         //再生の準備をする
         audioStart.prepareToPlay()
         audioStop.prepareToPlay()
+        audioComplete.prepareToPlay()
         
     }
 
@@ -151,6 +156,9 @@ class ViewController: UIViewController {
         
         //remainCount（残り時間）が0以下の時、タイマーを止める
         if displayUpdate() <= 0 {
+            
+            //効果音再生
+            audioComplete.play()
             
             //初期化設定
             count = 0
