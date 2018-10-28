@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class ViewController: UIViewController {
     //設定値を扱うキーを設定
     let settingKey = "timer_value"
     
+    //再生するサウンドのインスタンス
+    var audioStart : AVAudioPlayer! = nil
+    var audioStop : AVAudioPlayer! = nil
 
     override func viewDidLoad() {//このViewControllerが呼び出される時に一度だけ実行される
         super.viewDidLoad()
@@ -29,6 +33,24 @@ class ViewController: UIViewController {
         
         //UserDefaultsに初期値を登録
         setting.register(defaults: [settingKey:180])
+        
+        //サウンドファイルのパスを作成
+        let soundFilePathStart = Bundle.main.path(forResource: "start", ofType: "mp3")!
+        let soundStart:URL = URL(fileURLWithPath: soundFilePathStart)
+        let soundFilePathStop = Bundle.main.path(forResource: "stop", ofType: "mp3")!
+        let soundStop:URL = URL(fileURLWithPath: soundFilePathStop)
+        
+        //AVAudioPlayerのインスタンスを作成、ファイルの読み込み
+        do {
+            audioStart = try AVAudioPlayer(contentsOf: soundStart, fileTypeHint: nil)
+            audioStop = try AVAudioPlayer(contentsOf: soundStop, fileTypeHint: nil)
+        } catch {
+            print("AVAudioPlayerインスタンス作成でエラー")
+        }
+        
+        //再生の準備をする
+        audioStart.prepareToPlay()
+        audioStop.prepareToPlay()
         
     }
 
@@ -61,11 +83,16 @@ class ViewController: UIViewController {
             //もしタイマーが、実行中だったらスタートしない
             if nowTimer.isValid == true {
                 
-                //何もしない
+                //何もしないで終了
                 return
                 
             }
+            
         }
+        
+        //連打した時に連続して音がなるように設定
+        audioStart.currentTime = 0 //再生場所を0に戻す
+        audioStart.play()
         
         //タイマーをスタート
         timer = Timer.scheduledTimer(timeInterval: 1.0,//タイマーを実行させる間隔。単位は秒
@@ -83,6 +110,10 @@ class ViewController: UIViewController {
             
             //もしタイマーが、実行中だったら中止
             if nowTimer.isValid == true {
+                
+                //連打した時に連続して音がなるように設定
+                audioStop.currentTime = 0 //再生場所を0に戻す
+                audioStop.play()
                 
                 //タイマーを停止
                 nowTimer.invalidate()

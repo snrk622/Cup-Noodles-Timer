@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -15,6 +16,9 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     
     //設定値を覚えるキーを設定
     let settingKey = "timer_value"
+    
+    //再生するサウンドのインスタンスを作成
+    var audioDecision : AVAudioPlayer! = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,21 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
             }
             
         }
+        
+        //サウンドファイルのパスを作成
+        let soundFilePathDecision = Bundle.main.path(forResource: "decision", ofType: "mp3")!
+        let soundDecision:URL = URL(fileURLWithPath: soundFilePathDecision)
+        
+        //AVAudioPlayerのインスタンスを作成、ファイルの読み込み
+        do {
+            audioDecision = try AVAudioPlayer(contentsOf: soundDecision, fileTypeHint: nil)
+        } catch {
+            print("AVAudioPlayerインスタンス作成でエラー")
+        }
+        
+        //再生の準備をする
+        audioDecision.prepareToPlay()
+        
     }
     
 
@@ -53,6 +72,10 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     @IBOutlet weak var timerSettingPicker: UIPickerView!
     
     @IBAction func dicisionButtonAction(_ sender: Any) {
+        
+        //連打した時に連続して音がなるように設定
+        audioDecision.currentTime = 0 //再生場所を0に戻す
+        audioDecision.play()
         
         //前の画面に戻る
         _ = navigationController?.popViewController(animated: true)

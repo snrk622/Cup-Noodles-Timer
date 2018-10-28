@@ -13,6 +13,9 @@
 		3CFDC1C521844BE7001329C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDC1C421844BE7001329C9 /* Assets.xcassets */; };
 		3CFDC1C821844BE7001329C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDC1C621844BE7001329C9 /* LaunchScreen.storyboard */; };
 		3CFDC1D021846058001329C9 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFDC1CF21846058001329C9 /* SettingViewController.swift */; };
+		3CFDC1D22185CD1F001329C9 /* start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDC1D12185CB01001329C9 /* start.mp3 */; };
+		3CFDC1D42185D070001329C9 /* stop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDC1D32185CEDB001329C9 /* stop.mp3 */; };
+		3CFDC1D62185D2B6001329C9 /* decision.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3CFDC1D52185D0EF001329C9 /* decision.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		3CFDC1C721844BE7001329C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3CFDC1C921844BE7001329C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CFDC1CF21846058001329C9 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		3CFDC1D12185CB01001329C9 /* start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = start.mp3; path = /Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/start.mp3; sourceTree = "<absolute>"; };
+		3CFDC1D32185CEDB001329C9 /* stop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = stop.mp3; path = /Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/stop.mp3; sourceTree = "<absolute>"; };
+		3CFDC1D52185D0EF001329C9 /* decision.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = decision.mp3; path = /Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/decision.mp3; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +62,9 @@
 		3CFDC1BC21844BE6001329C9 /* cupNoodleApp */ = {
 			isa = PBXGroup;
 			children = (
+				3CFDC1D12185CB01001329C9 /* start.mp3 */,
+				3CFDC1D32185CEDB001329C9 /* stop.mp3 */,
+				3CFDC1D52185D0EF001329C9 /* decision.mp3 */,
 				3CFDC1BD21844BE6001329C9 /* AppDelegate.swift */,
 				3CFDC1BF21844BE6001329C9 /* ViewController.swift */,
 				3CFDC1C121844BE6001329C9 /* Main.storyboard */,
@@ -125,6 +134,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CFDC1D62185D2B6001329C9 /* decision.mp3 in Resources */,
+				3CFDC1D42185D070001329C9 /* stop.mp3 in Resources */,
+				3CFDC1D22185CD1F001329C9 /* start.mp3 in Resources */,
 				3CFDC1C821844BE7001329C9 /* LaunchScreen.storyboard in Resources */,
 				3CFDC1C521844BE7001329C9 /* Assets.xcassets in Resources */,
 				3CFDC1C321844BE6001329C9 /* Main.storyboard in Resources */,
