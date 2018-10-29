@@ -12,7 +12,8 @@ import AVFoundation
 class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     //UIPickerViewに表示するデータをArrayで作成
-    let settingArray : [Int] = [240, 180, 150, 120, 90, 60, 30, 15, 3]
+//    let settingArray : [Int] = [240, 180, 150, 120, 90, 60, 30, 15, 3]
+    let settingArray : [String] = ["やわらかめ", "普通", "硬め", "バリカタ", "ハリガネ", "粉落とし", "湯気通し", "なま"]
     
     //設定値を覚えるキーを設定
     let settingKey = "timer_value"
@@ -31,7 +32,7 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         //UserDefaultsの取得
         let settings = UserDefaults.standard
-        let timerValue = settings.integer(forKey: settingKey)
+        let timerValue = settings.string(forKey: settingKey)
         
         //Pickerの選択を合わせる
         for row in 0 ..< settingArray.count {//配列の要素数だけ繰り返す
@@ -107,7 +108,20 @@ class SettingViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
         //UserDefaultsの設定
         let settings = UserDefaults.standard
-        settings.setValue(settingArray[row], forKey: settingKey)
+//        settings.setValue(settingArray[row], forKey: settingKey)
+        
+        switch settingArray[row]{
+            case "やわらかめ": settings.setValue("240", forKey: settingKey)
+            case "普通": settings.setValue("180", forKey: settingKey)
+            case "硬め": settings.setValue("150", forKey: settingKey)
+            case "バリカタ": settings.setValue("120", forKey: settingKey)
+            case "ハリガネ": settings.setValue("90", forKey: settingKey)
+            case "粉落とし": settings.setValue("60", forKey: settingKey)
+            case "湯気通し": settings.setValue("30", forKey: settingKey)
+            case "なま": settings.setValue("3", forKey: settingKey)
+        default: settings.setValue(settingArray[row], forKey: settingKey)
+        }
+        
         settings.synchronize()//データを「即時に」永続化
     }
     

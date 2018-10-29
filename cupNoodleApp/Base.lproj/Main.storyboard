@@ -78,6 +78,7 @@
                     <connections>
                         <outlet property="countDownLabel" destination="lkw-yp-XMm" id="WtE-LT-Y5l"/>
                         <outlet property="imageView" destination="n1F-Kz-wkf" id="F6p-6i-MVH"/>
+                        <outlet property="titleLabel" destination="L7d-7b-EMp" id="XIk-BO-ug8"/>
                         <segue destination="AaC-0T-T4e" kind="show" identifier="goSetting" id="8tp-gZ-xfp"/>
                     </connections>
                 </viewController>

@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         
         //UserDefaultsに初期値を登録
         setting.register(defaults: [settingKey:180])
-        
+
         //サウンドファイルのパスを作成
         let soundFilePathStart = Bundle.main.path(forResource: "start", ofType: "mp3")!
         let soundStart:URL = URL(fileURLWithPath: soundFilePathStart)
@@ -68,6 +68,7 @@ class ViewController: UIViewController {
     }
 
     @IBOutlet weak var countDownLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBAction func settingButtonAction(_ sender: Any) {//「麺の硬さ」がタップされたら実行
         
@@ -213,7 +214,10 @@ class ViewController: UIViewController {
         let image = UIImage(named: "cupnoodle")
         imageView.image = image
         
+        
     }
+    
+    
     
 }
 
