@@ -24,6 +24,8 @@ class ViewController: UIViewController {
     var audioStart : AVAudioPlayer! = nil
     var audioStop : AVAudioPlayer! = nil
     var audioComplete : AVAudioPlayer! = nil
+    
+    @IBOutlet weak var imageView: UIImageView!
 
     override func viewDidLoad() {//このViewControllerが呼び出される時に一度だけ実行される
         super.viewDidLoad()
@@ -57,6 +59,12 @@ class ViewController: UIViewController {
         audioStop.prepareToPlay()
         audioComplete.prepareToPlay()
         
+        //画像を変更
+        let image = UIImage(named: "cupnoodle")
+        imageView.image = image
+        
+        
+        
     }
 
     @IBOutlet weak var countDownLabel: UILabel!
@@ -82,6 +90,10 @@ class ViewController: UIViewController {
     
     @IBAction func startButtonAction(_ sender: Any) {//スタートボタンがタップされたら実行
         
+        //画像を変更
+        let image = UIImage(named: "cupnoodle")
+        imageView.image = image
+        
         //timerをアンラップしてnowTimerに代入
         if let nowTimer = timer {
             
@@ -101,10 +113,10 @@ class ViewController: UIViewController {
         
         //タイマーをスタート
         timer = Timer.scheduledTimer(timeInterval: 1.0,//タイマーを実行させる間隔。単位は秒
-                                     target: self,//タイマー実行時の呼び出し先を指定
-                                     selector: #selector(self.timerInterrupt(_:)),
-                                     userInfo: nil,//設定したメソッドに渡す情報を指定
-                                     repeats: true)//繰り返しを指定。false（一回のみ）
+            target: self,//タイマー実行時の呼び出し先を指定
+            selector: #selector(self.timerInterrupt(_:)),
+            userInfo: nil,//設定したメソッドに渡す情報を指定
+            repeats: true)//繰り返しを指定。false（一回のみ）
         
     }
     
@@ -126,9 +138,7 @@ class ViewController: UIViewController {
             }
         }
         
-        
     }
-    
     
     func displayUpdate() -> Int {//画面の更新をする（戻り値：remainCount:残り時間）
         
@@ -159,6 +169,10 @@ class ViewController: UIViewController {
             
             //効果音再生
             audioComplete.play()
+            
+            //画像を変更
+            let image = UIImage(named: "cupnoodle-done")
+            imageView.image = image
             
             //初期化設定
             count = 0
@@ -194,6 +208,10 @@ class ViewController: UIViewController {
         
         //タイマーの表示を更新する
         _ = displayUpdate()
+        
+        //画像を変更
+        let image = UIImage(named: "cupnoodle")
+        imageView.image = image
         
     }
     

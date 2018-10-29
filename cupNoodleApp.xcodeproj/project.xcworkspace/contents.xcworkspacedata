@@ -2,18 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/complete.mp3">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/decision.mp3">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/stop.mp3">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/riki/Documents/Apps/cupNoodleApp/cupNoodleApp/start.mp3">
-   </FileRef>
-   <FileRef
       location = "self:">
    </FileRef>
 </Workspace>
