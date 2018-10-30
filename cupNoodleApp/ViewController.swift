@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     //設定値を扱うキーを設定
     let settingKey = "timer_value"
+    let settingKey2 = "title_value"
     
     //再生するサウンドのインスタンス
     var audioStart : AVAudioPlayer! = nil
@@ -87,9 +88,20 @@ class ViewController: UIViewController {
         //画面遷移を行う
         performSegue(withIdentifier: "goSetting",//segueで関連付けた画面を指定
                      sender: nil)//画面遷移時に渡すデータを指定
+        
+        //背景色を変更
+        view.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
+        
+        //画像を変更
+        let image = UIImage(named: "cupnoodle")
+        imageView.image = image
+        
     }
     
     @IBAction func startButtonAction(_ sender: Any) {//スタートボタンがタップされたら実行
+        
+        //背景色を変更
+        view.backgroundColor = UIColor(red:1, green:1, blue:1, alpha:1)
         
         //画像を変更
         let image = UIImage(named: "cupnoodle")
@@ -158,6 +170,8 @@ class ViewController: UIViewController {
         //残り時間を戻り値に設定
         return remainCount
         
+        
+        
     }
     
     @objc func timerInterrupt(_ timer:Timer) {//スタートボタンがタップされたら呼び出される
@@ -170,6 +184,9 @@ class ViewController: UIViewController {
             
             //効果音再生
             audioComplete.play()
+            
+            //背景色を変更
+            view.backgroundColor = UIColor(red:1, green:1, blue:0.68, alpha:1)
             
             //画像を変更
             let image = UIImage(named: "cupnoodle-done")
@@ -210,9 +227,14 @@ class ViewController: UIViewController {
         //タイマーの表示を更新する
         _ = displayUpdate()
         
-        //画像を変更
-        let image = UIImage(named: "cupnoodle")
-        imageView.image = image
+        //UserDefaultsのインスタンスを作成
+        let settingTitle = UserDefaults.standard
+        
+        //UserDefaultsの取得
+        let titleValue = settingTitle.string(forKey: settingKey2)
+        
+        //タイトルをラベルに表示
+        titleLabel.text = "\(titleValue!)"
         
         
     }
